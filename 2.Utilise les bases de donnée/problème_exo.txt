@@ -1,0 +1,15 @@
+Question 1 : 
+
+Aucun légume n'a un poids moyen supérieur à 400g, donc ça rend les réponse (a,b,c,d) fauses.
+
+Question 2 :
+
+Requête corriger : 
+
+```sql
+SELECT nom, couleur, AVG(calories/poids_moyen) AS cal_par_poid
+FROM legumes
+GROUP BY nom, couleur
+ORDER BY cal_par_poid DESC
+LIMIT 3;
+```

@@ -1,0 +1,56 @@
+Quels problèmes apparaient selon vous avec la base fruits_legumes ? 
+1.La duplication des données : Si on à des fruits et légumes qui ont les mêmes propriétés, on va avoir des redondances.
+2.Extensibilité : si on ajoute des fruits ou légumes par exemple cela pourrais poser des problème,               
+3.Attribution de propriétés : Différents types d'aliments peuvent avoir des propriétés différentes.
+
+Comment peut-ton réorganiser cette base de donnée ?
+1.Table aliments : Stocke les informations générales sur chaque aliment.
+2.Table types_d'aliment : Catégorise chaque aliment (fruit, légume, céréale, etc.).
+3.Table couleurs : Décrit les différentes couleurs que peut avoir un aliment.
+
+```sql
+CREATE TABLE types_daliment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE couleurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    couleur VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE aliments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    type_id INT,
+    couleur_id INT,
+    FOREIGN KEY (type_id) REFERENCES types_daliment(id),
+    FOREIGN KEY (couleur_id) REFERENCES couleurs(id)
+);
+```
+
+Pour la correction : je suis sous mariaDB donc j'ai du modifier les requêtes pour que ça fonctionne.
+
+```sql
+
+erreur des tables couleur et couleurs 
+de même pour hexadecimal_rvb et hexadecimale_rvb
+
+Apportation du SQL : https://cours.institutsolacroup.com/pluginfile.php/2252/mod_resource/content/1/alimentations.sql
+
+1.Remplacé "MOTEUR" par "ENGINE".
+2.Changé "PAR DÉFAUT" par "DEFAULT".
+3.Modifié "INSÉRER DANS" par "INSERT INTO".
+4.Remplacé "CRÉER TABLE" par "CREATE TABLE".
+5.Modifié "INSÉRER DANS LES VALEURS" par "INSERT INTO ... VALUES".
+
+Exemple : 
+
+bug :
+INSERT INTO `aliments` (`id`, `nom`, `poids_moyen`, `calories`, `vitamines_C`, `type_id`, `couleur_id`) VALUES
+debug :
+INSERT INTO aliments (id, nom, poids_moyen, calories, vitamines_C, type_id, couleur_id) VALUES
+
+etc.. j'ai eu plein de truc comme ça j'ai mis 1 heure à tout debug car je suis sous mariaDB et non pas MySQL sur mon linux
+
+```
