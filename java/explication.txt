@@ -1,20 +1,22 @@
 Comment se connecté avec JAVA à une base de données MySQL ?
-
-Je suis sur une machine linux donc cela sera différent de vous, car vous serez en local host.
-
-1. Télécharger le driver JDBC pour MySQL
+--
+Je suis sur une machine linux donc cela sera différent de vous, car vous serez en localhost.
+--
+1. compilez votre fichier java | javac Main.java
+--
+2. Télécharger le driver JDBC pour MySQL
 check version pour voir si tu la | java -version
 check les paquets | sudo apt update
-Ensuite install le build , moi j'ai pris celui par defaut | sudo apt install default-jdk
+Ensuite install, moi j'ai pris celui par defaut | sudo apt install default-jdk
 check si java est bien installé | java -version
-
+--
 Ensuite téléchargez le pilote JDBC pour MySQL : 
-télécharger la version | wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.28.tar.gz
+télécharger la version du build | wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.28.tar.gz
 Décompressez le | tar -xvzf mysql-connector-java-8.0.28.tar.gz
 Copiez le fichier JAR dans votre répertoire actuel ou dans le chemin ou vous avez le fichier java | cp mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar .
 Exécutez votre programme avec le pilote JDBC sur le classpath | java -cp .:mysql-connector-java-8.0.28.jar Main
-
-2.Vérifiez l'adresse IP et le port si elle est 127.0.0.1 elle doit être 0.0.0.0 car sinon on peut pas se connecter à la base de données, car ses que localhost qui peut se connecter.
+--
+3.Vérifiez l'adresse IP et le port si elle est 127.0.0.1 elle doit être 0.0.0.0 car sinon on peut pas se connecter à la base de données, car ses que localhost qui peut se connecter.
 Vérifié le status MariaDB | sudo systemctl status mariadb
 Donnée l'accès à l'utilisateur root | sudo mysql -u root
 Autorisé la connexion à distance | GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
