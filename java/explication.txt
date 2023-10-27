@@ -2,7 +2,8 @@ Comment se connecté avec JAVA à une base de données MySQL ?
 --
 Je suis sur une machine linux donc cela sera différent de vous, car vous serez en localhost.
 --
-1. compilez votre fichier java | javac Main.java
+1. Compilez votre fichier java | javac Main.java
+Une fois compilé sa vous à crée le fichier Main.class et qui est le bytecode Java, comme ça on peut l'exécuter avec la machine virtuelle Java(JVM).
 --
 2. Télécharger le driver JDBC pour MySQL
 check version pour voir si tu la | java -version
